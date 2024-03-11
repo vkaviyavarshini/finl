@@ -1,13 +1,14 @@
 import { API_URL } from "../config/config";
 
 const PlaceOrder = (orderData) => {
-    const apiUrl = `${API_URL}/api/order`;
+    const apiUrl = `${API_URL}/api/order/submit`;
     console.log('API URL:', apiUrl);
 
     return fetch(apiUrl, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization:`Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(orderData)
     })
